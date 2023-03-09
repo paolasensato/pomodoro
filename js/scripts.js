@@ -3,7 +3,7 @@ const buttonTypePomodoro = document.querySelector('#buttonTypePomodoro');
 
 const audio = new Audio('./sounds/alarm.mp3');
 
-const pomodoroEmSegundos = 60 * 1;
+const pomodoroEmSegundos = 60;
 const TYPE_POMODORO = "POMODORO";
 
 let progressInterval;
@@ -32,9 +32,17 @@ const comecarTemporizador = () => {
 
 const pararTemporizador = () => clearInterval(progressInterval);
 
+const resetarTemporizador = () => {
+    clearInterval(progressInterval);
+
+    valorTimer = pomodoroEmSegundos;
+
+    setProgressoTemporizador();
+}
+
 function setProgressoTemporizador() {
 
-    if(valorTimer === 0) {
+    if (valorTimer === 0) {
         pararTemporizador();
         audio.play();
     }
