@@ -1,6 +1,7 @@
 const progressBarNumber = document.querySelector('#progressBar .progress-value');
 const buttonTypePomodoro = document.querySelector('#buttonTypePomodoro');
 const buttonTypePausa = document.querySelector('#buttonTypePausa');
+const contador = document.querySelector("#contador");
 
 const audio = new Audio('./sounds/alarm.mp3');
 
@@ -8,8 +9,8 @@ const pomodoroEmSegundos = 60 * 25;
 const pausaEmSegundos = 60 * 5;
 
 const TYPE_POMODORO = "POMODORO";
-const TYPE_PAUSA = "Pausa";
 
+let contPomodoro = 0;
 let progressInterval;
 let pomodoroTipo = TYPE_POMODORO;
 let valorTimer = pomodoroEmSegundos;
@@ -26,7 +27,15 @@ function formataNumeroEmString(number) {
     return `${minutos}:${segundos}`;
 }
 
+function adicionaAoContador() {
+    if (pomodoroTipo === TYPE_POMODORO && valorTimer === pomodoroEmSegundos) contPomodoro++;
+
+    contador.innerHTML = contPomodoro;
+}
+
 const comecarTemporizador = () => {
+
+    adicionaAoContador();
 
     valorTimer === 0 && resetarTemporizador();
 
