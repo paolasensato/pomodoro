@@ -11,15 +11,23 @@
     <h1>Pomodoro</h1>
 
     <button id="buttonTypePomodoro" class="active">Pomodoro</button>
-    <button id="buttonTypeShort">Pausa</button>
+    <button id="buttonTypePausa">Pausa</button>
 
     <div id="progressBar">
-      <h2 class="progress-value">25:00</h2>
+      <h2 class="progress-value">1:00</h2>
     </div>
 
     <div>
-      <button>Começar</button>
-      <button>Parar</button>
+      <button
+        onclick="comecarTemporizador()"
+      >
+        Começar
+      </button>
+      <button
+        onclick="pararTemporizador()"
+      >
+        Parar
+      </button>
       <button>Resetar</button>
     </div>
   </body>
