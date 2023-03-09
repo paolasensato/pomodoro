@@ -10,11 +10,22 @@
   <body>
     <h1>Pomodoro</h1>
 
-    <button id="buttonTypePomodoro" class="active">Pomodoro</button>
-    <button id="buttonTypePausa">Pausa</button>
+    <button
+      id="buttonTypePomodoro"
+      class="active"
+      onclick="setTipoPomodoro(TYPE_POMODORO)"
+    >
+      Pomodoro
+    </button>
+    <button
+      id="buttonTypePausa"
+      onclick="setTipoPomodoro(TYPE_PAUSA)"
+    >
+      Pausa
+    </button>
 
     <div id="progressBar">
-      <h2 class="progress-value">1:00</h2>
+      <h2 class="progress-value">25:00</h2>
     </div>
 
     <div>

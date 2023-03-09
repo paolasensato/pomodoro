@@ -1,10 +1,14 @@
 const progressBarNumber = document.querySelector('#progressBar .progress-value');
 const buttonTypePomodoro = document.querySelector('#buttonTypePomodoro');
+const buttonTypePausa = document.querySelector('#buttonTypePausa');
 
 const audio = new Audio('./sounds/alarm.mp3');
 
-const pomodoroEmSegundos = 60;
+const pomodoroEmSegundos = 60 * 25;
+const pausaEmSegundos = 60 * 5;
+
 const TYPE_POMODORO = "POMODORO";
+const TYPE_PAUSA = "Pausa";
 
 let progressInterval;
 let pomodoroTipo = TYPE_POMODORO;
@@ -23,11 +27,14 @@ function formataNumeroEmString(number) {
 }
 
 const comecarTemporizador = () => {
+
+    valorTimer === 0 && resetarTemporizador();
+
     progressInterval = setInterval(() => {
         valorTimer = valorTimer - 1;
         setProgressoTemporizador();
     }, 1000);
-    
+
 }
 
 const pararTemporizador = () => clearInterval(progressInterval);
@@ -35,7 +42,9 @@ const pararTemporizador = () => clearInterval(progressInterval);
 const resetarTemporizador = () => {
     clearInterval(progressInterval);
 
-    valorTimer = pomodoroEmSegundos;
+    valorTimer = (pomodoroTipo === TYPE_POMODORO)
+        ? pomodoroEmSegundos
+        : pausaEmSegundos
 
     setProgressoTemporizador();
 }
@@ -49,4 +58,10 @@ function setProgressoTemporizador() {
 
     progressBarNumber.textContent = `${formataNumeroEmString(valorTimer)}`;
 
+}
+
+const setTipoPomodoro = (tipo) => {
+    pomodoroTipo = tipo;
+
+    resetarTemporizador();
 }
