@@ -32,18 +32,18 @@ function formataNumeroEmString(number) {
 
 const setTimer = () => {
     pararTemporizador();
-    
+
     time = timeInput.value;
 
     if (time == 0) {
         alert("O tempo deve ser maior que 0");
         return;
     }
-    
+
     valorTimer = 60 * time;
 
     setProgressoTemporizador();
-    
+
 }
 
 const comecarTemporizador = () => {
@@ -97,6 +97,14 @@ function setProgressoTemporizador() {
 
 const setTipoPomodoro = (tipo) => {
     pomodoroTipo = tipo;
+
+    if (tipo === TYPE_PAUSA) {
+        buttonTypePomodoro.classList.remove("active");
+        buttonTypePausa.classList.add("active");
+    } else {
+        buttonTypePausa.classList.remove("active");
+        buttonTypePomodoro.classList.add("active");
+    }
 
     resetarTemporizador();
 }

@@ -5,56 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pomodoro</title>
+    <link rel="stylesheet" href="styles/style.css">
     <script src="js/scripts.js" defer></script>
   </head>
   <body>
-    <h1>Pomodoro</h1>
+    <div class="card">
+      <h1>Pomodoro</h1>
 
-    <div>
-      <label for="time">Selecione o tempo em minutos:</label>
-      <input type="number" name="time" id="time" min="5" max="240">
-      <button onclick="setTimer()" >Definir</button>
-    </div>
+      <div>
+        <label for="time">Tempo Desejado em Minutos:</label>
+        <input type="number" name="time" id="time" min="5" max="240">
+        <button
+          class="btn"
+          onclick="setTimer()" 
+        >
+          Definir
+        </button>
+      </div>
 
-    <button
-      id="buttonTypePomodoro"
-      class="active"
-      onclick="setTipoPomodoro(TYPE_POMODORO)"
-    >
-      Pomodoro
-    </button>
-    <button
-      id="buttonTypePausa"
-      onclick="setTipoPomodoro(TYPE_PAUSA)"
-    >
-      Pausa
-    </button>
+      <div class="card-header-button">
+        <button
+          id="buttonTypePomodoro"
+          class="btn active"
+          onclick="setTipoPomodoro(TYPE_POMODORO)"
+        >
+          Pomodoro
+        </button>
+        <button
+          class="btn"
+          id="buttonTypePausa"
+          onclick="setTipoPomodoro(TYPE_PAUSA)"
+        >
+          Pausa
+        </button>
+      </div>
 
-    <div id="progressBar">
-      <h2 class="progress-value">25:00</h2>
-    </div>
+      <br>
+      
+      <div id="progressBar">
+        <h2 class="progress-value">25:00</h2>
+      </div>
 
-    <div>
-      <button
-        onclick="comecarTemporizador()"
-      >
-        Começar
-      </button>
-      <button
-        onclick="pararTemporizador()"
-      >
-        Parar
-      </button>
-      <button
-        onclick="resetarTemporizador()"
-      >
-        Resetar
-      </button>
-    </div>
+      <br>
 
-    <div>
-      <text>Pomodoros feitos:</text>
-      <text id="contador">0</text>
+      <div>
+        <button
+          class="btn"
+          onclick="comecarTemporizador()"
+        >
+          Começar
+        </button>
+        <button
+          class="btn"
+          onclick="pararTemporizador()"
+        >
+          Parar
+        </button>
+        <button
+          class="btn"
+          onclick="resetarTemporizador()"
+        >
+          Resetar
+        </button>
+      </div>
+
+      <br>
+
+      <div>
+        <text>Pomodoros feitos hoje:</text>
+        <text id="contador">0</text>
+      </div>
     </div>
   </body>
 </html>
