@@ -5,8 +5,8 @@ const contador = document.querySelector("#contador");
 
 const audio = new Audio('./sounds/alarm.mp3');
 
-const pomodoroEmSegundos = 60 * 25;
-const pausaEmSegundos = 60 * 5;
+const pomodoroEmSegundos = 5;
+let pausaEmSegundos = 60 * 5;
 
 const TYPE_POMODORO = "POMODORO";
 const TYPE_PAUSA = "PAUSA";
@@ -52,10 +52,17 @@ const resetarTemporizador = () => {
     setProgressoTemporizador();
 }
 
-function contaPomodoro() {
-    if (pomodoroTipo === TYPE_POMODORO && valorTimer === pomodoroEmSegundos) contPomodoro++;
+const sugerirDescanso = () => {
+    if (window.confirm("Deseja ter um descanso de 10 minutos?")) {
+        pausaEmSegundos = 60 * 10;
+        setTipoPomodoro(TYPE_PAUSA);
+    }
+}
 
-    contador.innerHTML = contPomodoro;
+function contaPomodoro() {
+    if (pomodoroTipo === TYPE_POMODORO) contPomodoro++;
+
+    return contador.innerHTML = contPomodoro;
 }
 
 function setProgressoTemporizador() {
@@ -64,9 +71,10 @@ function setProgressoTemporizador() {
         pararTemporizador();
         audio.play();
         contaPomodoro();
+        if (contPomodoro % 4 == 0) sugerirDescanso();
     }
 
-    progressBarNumber.textContent = `${formataNumeroEmString(valorTimer)}`;
+    return progressBarNumber.textContent = `${formataNumeroEmString(valorTimer)}`;
 
 }
 
