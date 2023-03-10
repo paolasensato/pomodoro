@@ -10,6 +10,12 @@
   <body>
     <h1>Pomodoro</h1>
 
+    <div>
+      <label for="time">Selecione o tempo em minutos:</label>
+      <input type="number" name="time" id="time" min="5" max="240">
+      <button onclick="setTimer()" >Definir</button>
+    </div>
+
     <button
       id="buttonTypePomodoro"
       class="active"
