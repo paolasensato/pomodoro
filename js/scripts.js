@@ -9,6 +9,7 @@ const pomodoroEmSegundos = 60 * 25;
 const pausaEmSegundos = 60 * 5;
 
 const TYPE_POMODORO = "POMODORO";
+const TYPE_PAUSA = "PAUSA";
 
 let contPomodoro = 0;
 let progressInterval;
@@ -27,15 +28,8 @@ function formataNumeroEmString(number) {
     return `${minutos}:${segundos}`;
 }
 
-function adicionaAoContador() {
-    if (pomodoroTipo === TYPE_POMODORO && valorTimer === pomodoroEmSegundos) contPomodoro++;
-
-    contador.innerHTML = contPomodoro;
-}
 
 const comecarTemporizador = () => {
-
-    adicionaAoContador();
 
     valorTimer === 0 && resetarTemporizador();
 
@@ -58,11 +52,18 @@ const resetarTemporizador = () => {
     setProgressoTemporizador();
 }
 
+function contaPomodoro() {
+    if (pomodoroTipo === TYPE_POMODORO && valorTimer === pomodoroEmSegundos) contPomodoro++;
+
+    contador.innerHTML = contPomodoro;
+}
+
 function setProgressoTemporizador() {
 
     if (valorTimer === 0) {
         pararTemporizador();
         audio.play();
+        contaPomodoro();
     }
 
     progressBarNumber.textContent = `${formataNumeroEmString(valorTimer)}`;
