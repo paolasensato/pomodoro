@@ -88,7 +88,7 @@ function setProgressoTemporizador() {
         pararTemporizador();
         audio.play();
         contaPomodoro();
-        if (contPomodoro % 4 == 0) sugerirDescanso();
+        if (contPomodoro % 4 == 0 && contPomodoro != 0) sugerirDescanso();
     }
 
     return progressBarNumber.textContent = `${formataNumeroEmString(valorTimer)}`;
