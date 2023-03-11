@@ -48,7 +48,7 @@ const setTimer = () => {
 
 const comecarTemporizador = () => {
 
-    valorTimer === 0 && resetarTemporizador();
+    valorTimer <= 0 && resetarTemporizador();
 
     progressInterval = setInterval(() => {
         valorTimer = valorTimer - 1;
@@ -84,7 +84,7 @@ function contaPomodoro() {
 
 function setProgressoTemporizador() {
 
-    if (valorTimer === 0) {
+    if (valorTimer <= 0) {
         pararTemporizador();
         audio.play();
         contaPomodoro();
